@@ -1,0 +1,16 @@
+<%- include("layouts/header"); %>
+<h1>Compose</h1>
+<form class="" action="/compose" method="post">
+
+  <div class="form-group">
+    <label for="inputTitle">Title</label>
+    <input class="form-control" type="text" id="inputTitle" name="inputTitle" placeholder="Enter the title">
+  </div>
+  <div class="form-group">
+    <label for="inputText">Text</label>
+    <textarea class="form-control" type="text" id="inputText" name="inputText" rows="3" placeholder="Enter the text"></textarea>
+  </div>
+  <button class="btn btn-primary" type="submit" name="button">Publish</button>
+</form>
+
+<%- include("layouts/footer"); %>
