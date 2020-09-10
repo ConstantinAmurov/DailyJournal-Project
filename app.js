@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
 try {
-  mongoose.connect("mongodb+srv://Constantin:Test123@cluster0.ehls6.mongodb.net/dailyJournalDB?retryWrites=true&w=majority", {
+  mongoose.connect("mongodb+srv://Constantin:@cluster0.ehls6.mongodb.net/dailyJournalDB?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
   }, () => {
