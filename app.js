@@ -34,15 +34,21 @@ try {
     const postsSchema = {
       title: String,
       text: String
-    }
-    const Post = mongoose.model("Post",postsSchema);
-    
+    };
+    const Post = mongoose.model("Post", postsSchema);
+    // const testPost = new Post ({title:"Test Title", text: "Test Title"});
+    // testPost.save((err)=> {
+    //   if(!err) console.log("Saved succesfully to database");
+    // });
     app.get("/", (req, res) => {
-
-      res.render("home", {
-        homeStartingContent: homeStartingContent,
-        posts: posts // { key(infoHome) : value (homeStartingContent)}
+      Post.find({}, function(err, foundPosts) {
+        console.log(foundPosts);
+        res.render("home", {
+          homeStartingContent: homeStartingContent,
+          posts: foundPosts // { key(infoHome) : value (homeStartingContent)}
+        });
       });
+
 
     });
 
@@ -62,11 +68,12 @@ try {
       res.render("compose");
     });
     app.post("/compose", (req, res) => {
-      const post = {
-        title: req.body.inputTitle,
-        text: req.body.inputText
-      };
-      posts.push(post);
+      const post = new Post({
+          title: req.body.inputTitle,
+          text: req.body.inputText
+      });
+
+      post.save();
       res.redirect("/");
     });
     app.get("/posts/:postName", (req, res) => {
